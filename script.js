@@ -54,3 +54,25 @@ let bIsPrime = isPrime(num);
 console.log("isprime = " + bIsPrime);
 // ------------------------------------------
 
+// --------------- Ex 3 -----------
+// --------------------------------
+function setSpcaces(inStr) {
+    let outStr = "";
+    let charCode;;
+    let ch;
+
+    for (let i = 0; i < String(inStr).length; i++) {
+        ch = String(inStr).charAt(i);
+        charCode = String(inStr).charCodeAt(i)
+        if (charCode >= 65 && charCode <= 90) {
+            outStr = outStr + " " + ch;
+        } else if (charCode >= 97 && charCode <= 122) {
+            outStr = outStr + ch;
+        }
+    }
+    return outStr;
+}
+let outStr = setSpcaces("abCdEf");
+console.log("outStr = " + outStr);
+// ------------------------------------------
+
