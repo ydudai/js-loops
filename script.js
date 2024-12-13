@@ -29,3 +29,28 @@ const inputElem = document.getElementById("inputNumber").addEventListener("keyup
     }
 });
 // ------------------------------------------
+
+// --------------- Ex 2 -----------
+// --------------------------------
+function isPrime(num) {
+    let isPrime = true;
+
+    if (num % 2 == 0 || num % 5 == 0 || num % 10 == 0) {
+        isPrime = false;
+    } else {
+        for (let i = 2; i < num - 1; i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+    }
+
+    return isPrime;
+}
+
+let num = 9;
+let bIsPrime = isPrime(num);
+console.log("isprime = " + bIsPrime);
+// ------------------------------------------
+
