@@ -76,3 +76,21 @@ let outStr = setSpcaces("abCdEf");
 console.log("outStr = " + outStr);
 // ------------------------------------------
 
+// ------------------ Ex 4 ------------------
+// ------------------------------------------
+function findStrings(s1, s2) {
+    let strs = String(s1).split(s2);
+    let numStrs = strs.length - 1;
+    return numStrs;
+    
+}
+
+let nStrs = findStrings("YoxxssiDxxudxxai", "xx");
+console.log("num substrings = " + nStrs);
+
+nStrs = findStrings("YoxxssiDxxudaixx", "xx");
+console.log("num substrings = " + nStrs);
+
+nStrs = findStrings("xxYoxxssiDxxudai", "xx");
+console.log("num substrings = " + nStrs);
+// ------------------------------------------
