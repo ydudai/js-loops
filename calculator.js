@@ -1,3 +1,7 @@
+let eqPressed = false;
+function setEqualPressed(isPressed) {
+    eqPressed = isPressed;
+}
 
 function showValueInInput() {
     let val;
@@ -8,7 +12,8 @@ function showValueInInput() {
 
     document.addEventListener('click', clickListener, false)
 
-    function clickListener(event) {    
+    function clickListener(event) {
+        let res;
         id = event.target.id;
         val = event.srcElement.value;
         currentTextValue = document.getElementById('showResult').value;
@@ -23,22 +28,28 @@ function showValueInInput() {
             action = val;
             document.getElementById('showResult').value = currentTextValue + val
             event.stopImmediatePropagation();
- 
+
         } else if (id == "equal") {
             let expression = document.getElementById('showResult').value;
-            let res = calc(expression);
-            
-            if (res != undefined) {
+            res = calc(expression);
+
+            if (res != NaN) {
                 document.getElementById('showResult').value = res;
                 event.stopImmediatePropagation();
                 X = NaN;
                 Y = NaN;
                 action = "";
+                res = null;
             }
 
         } else {
-            document.getElementById('showResult').value = currentTextValue + val
-            event.stopImmediatePropagation();
+            if (eqPressed) {
+                document.getElementById('showResult').value = val;
+            } else {
+                document.getElementById('showResult').value = currentTextValue + val
+                event.stopImmediatePropagation();               
+            }
+            eqPressed = false;
         }
     }
 
@@ -46,7 +57,7 @@ function showValueInInput() {
         let res;
 
         let XY = String(expression).split(action);
-        if(XY.length == 2) {
+        if (XY.length == 2) {
             X = parseInt(XY[0]);
             Y = parseInt(XY[1]);
         }
